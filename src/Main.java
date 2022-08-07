@@ -1,6 +1,4 @@
-import br.com.dio.desafio.dominio.Conteudo;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,9 +20,33 @@ public class Main {
         mentoria.setDescricao("Descrição da Mentoria de Java");
         mentoria.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição do Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devCarolina = new Dev();
+        devCarolina.setNome("Carolina");
+        devCarolina.inscreverBootcamp(bootcamp);
+        devCarolina.progredir();
+        devCarolina.progredir();
+
+        System.out.println("Conteúdos Inscritos Carolina" + devCarolina.getConteudosInscritos());
+        System.out.println("Conteúdos Concluídos Carolina" + devCarolina.getConteudosConcluidos());
+        System.out.println("XP: " + devCarolina.calcularTotalXp());
+
+        System.out.println("-------");
+
+        Dev devCamila = new Dev();
+        devCamila.setNome("Camila");
+        devCamila.inscreverBootcamp(bootcamp);
+        devCamila.progredir();
+
+        System.out.println("Conteúdos Inscritos Camila" + devCamila.getConteudosInscritos());
+        System.out.println("Conteúdos Concluídos Camila" + devCamila.getConteudosConcluidos());
+        System.out.println("XP: " + devCamila.calcularTotalXp());
 
     }
 }
